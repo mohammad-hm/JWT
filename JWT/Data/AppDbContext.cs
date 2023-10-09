@@ -1,9 +1,9 @@
-﻿// Ignore Spelling: App
+﻿// Ignore Spelling: App JWT
 
 using Microsoft.EntityFrameworkCore;
-using store.Models;
+using JWT.Models;
 
-namespace store.Data
+namespace JWT.Data
 {
     public class AppDbContext : DbContext
     {

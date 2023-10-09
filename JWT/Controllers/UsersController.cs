@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using store.Data;
-using store.Models;
+using JWT.Data;
+using JWT.Models;
+using Microsoft.AspNetCore.Authorization;
 
-namespace store.Controllers
+namespace JWT.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class UsersController : ControllerBase
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace store.Models
+namespace JWT.Models
 {
     public class User
     {
