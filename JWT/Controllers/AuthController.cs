@@ -41,7 +41,7 @@ namespace JWT.Controllers
             new Claim(JwtRegisteredClaimNames.Sub, "user-id"),
             new Claim(JwtRegisteredClaimNames.Email, "user@example.com"),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
+            };
 
             var token = new JwtSecurityToken(
                 issuer: this.configuration["Authentication:Issuer"],
