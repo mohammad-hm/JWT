@@ -7,7 +7,9 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
+
+// A way for getting appsettings.jso
 var configuration = new ConfigurationBuilder()
       .SetBasePath(Directory.GetCurrentDirectory())
       .AddJsonFile("appsettings.json")
@@ -15,14 +17,14 @@ var configuration = new ConfigurationBuilder()
 
 builder.Services.AddSingleton(configuration);
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add sqlite connection
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
-// Add JWT Authentication
+// Add JWT Authentication - this setting uses when an api like (users) want to authorize using our token we produce earlier 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -32,7 +34,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false,
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Authentication:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:SecretForKey"])) 
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:SecretForKey"] ?? "")) 
         };
     });
 var app = builder.Build();
@@ -45,6 +47,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

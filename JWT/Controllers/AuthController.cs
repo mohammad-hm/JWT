@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: JWT
+﻿// Ignore Spelling: JWT Auth
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;

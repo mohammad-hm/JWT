@@ -25,7 +25,7 @@ namespace store.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("TEXT");

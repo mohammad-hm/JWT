@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// Ignore Spelling: JWT
+
+using System.ComponentModel.DataAnnotations;
 
 
 namespace JWT.Models
@@ -10,8 +12,8 @@ namespace JWT.Models
 
         [Required]
         [MaxLength(255)]
-        public string Username { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
 
-        // Add other user properties as needed
+
     }
 }
